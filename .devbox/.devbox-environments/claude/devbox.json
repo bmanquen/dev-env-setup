@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.2/.schema/devbox.schema.json",
+  "packages": [
+    "nodejs@latest",
+    "git@latest",
+    "claude-code@latest",
+    "fzf@latest",
+    "github-cli@2.23.0",
+  ],
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "true",
+  },
+  "shell": {
+    "init_hook": [
+      "~/.devbox-environments/claude/select-repo-and-run-claude.sh",
+    ],
+  },
+}

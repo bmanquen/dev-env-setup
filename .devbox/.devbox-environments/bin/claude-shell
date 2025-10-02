@@ -1,0 +1,2 @@
+#!/bin/zsh
+devbox shell --config ~/.devbox-environments/claude/devbox.json

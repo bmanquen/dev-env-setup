@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -z "which psql" ]; then
+	echo "installing postgresql"
+	brew install postgresql@18
+else
+	echo "postgresql already installed"
+fi
+

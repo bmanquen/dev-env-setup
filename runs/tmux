@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [-z "which tmux" ]; then
+	echo "installing tmux"
+	brew install tmux
+else
+	echo "tmux already installed"
+fi

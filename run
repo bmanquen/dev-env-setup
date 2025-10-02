@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+filter=""
+dry="0"
+
+while [[ $# > 0 ]]; do
+	if [[ $1 == "--dry" ]]; then
+		dry="1"
+	else
+		filter="$1"
+	fi
+	shift
+done
+
+log(){
+	if [[ $dry == "1" ]]; then
+		echo "[DRY_RUN]: $@"
+	else
+		echo "$@"
+	fi
+}
+
+execute(){
+	log "execute $@"
+	if [[ $dry == "1" ]]; then
+		return
+	fi
+	"$@"
+}
+
+log "$script_dir -- $filter"
+
+cd $script_dir
+
+# Install Homebrew
+if [ ! -d "/opt/homebrew/" ]; then
+	log "Installing Homebrew"
+	if [[ $dry != "1" ]]; then
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	fi
+else
+	log "Homebrew is already installed"
+fi
+
+if [ ! -f "/opt/homebrew/bin/gfind" ]; then
+	log "Installing findutils"
+	if [[ $dry != "1" ]]; then
+		brew install findutils
+	fi
+else
+	log "findutils is already installed"
+fi
+
+if [ ! -d "${HOME}/workspace" ]; then
+	log "creating workspace directory..."
+	if [[ $dry != "1" ]]; then
+		mkdir workspace
+	fi
+else
+	log "workspace directory already exists"
+fi
+
+scripts=$(gfind ./runs -maxdepth 1 -mindepth 1 -executable -type f)
+
+for script in $scripts; do
+	if echo "$script" | grep -qv "$filter"; then
+		log "filtering $script"
+		continue
+	fi
+
+	execute ./$script
+done

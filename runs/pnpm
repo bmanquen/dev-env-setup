@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -z "which pnpm" ]; then
+	echo "installing pnpm"
+	brew install pnpm
+else
+	echo "pnpm already installed"
+fi
