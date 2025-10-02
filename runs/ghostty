@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -z "which ghostty" ]; then
+	echo "installing ghostty"
+	brew install --cask ghostty
+else
+	echo "ghostty already installed"
+fi
