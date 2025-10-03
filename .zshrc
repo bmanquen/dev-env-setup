@@ -1,4 +1,3 @@
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 autoload -Uz compinit && compinit
 
 # Set up fzf key bindings and fuzzy completion
@@ -29,10 +28,8 @@ alias otf="cd workspace/OT-Frontend/mobile-app-maps"
 alias cc="claude-shell"
 export PATH="$PATH:$HOME/.devbox-environments/bin"
 
-# Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export PATH=$PATH:$(go env GOPATH)/bin
-
 # PostgreSQL
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
+
+# asdf
+export PATH="$HOME/.asdf/shims:$PATH"
