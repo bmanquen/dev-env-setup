@@ -34,3 +34,5 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 
+# PostgreSQL
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"

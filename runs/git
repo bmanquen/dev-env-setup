@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [ -z "which git" ]; then
-	echo "installing git"
-	brew install git
-else
-	echo "git already installed"
-fi

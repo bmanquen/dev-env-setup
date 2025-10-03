@@ -32,6 +32,10 @@ cd $script_dir
 copy_dir(){
 	from=$1
 	to=$2
+	
+	if [ ! -d "$to" ]; then
+		mkdir $to
+	fi
 
 	pushd $from > /dev/null
 	dirs=$(find . -mindepth 1 -maxdepth 1 -type d)

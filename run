@@ -37,7 +37,8 @@ cd $script_dir
 if [ ! -d "/opt/homebrew/" ]; then
 	log "Installing Homebrew"
 	if [[ $dry != "1" ]]; then
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
 else
 	log "Homebrew is already installed"

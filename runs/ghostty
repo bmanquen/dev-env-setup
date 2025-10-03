@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -z "which ghostty" ]; then
+
+if ! command -v ghostty > /dev/null 2>&1; then
 	echo "installing ghostty"
 	brew install --cask ghostty
 else

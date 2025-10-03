@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -z "which nvim" ]; then
+if ! command -v nvim > /dev/null 2>&1; then
 	echo "installing neovim"
 	brew install neovim
 else

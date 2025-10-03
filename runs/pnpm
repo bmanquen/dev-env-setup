@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -z "which pnpm" ]; then
+
+if ! command -v pnpm > /dev/null 2>&1; then
 	echo "installing pnpm"
 	brew install pnpm
 else

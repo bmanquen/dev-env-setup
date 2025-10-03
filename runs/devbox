@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -z "which devbox" ]; then
+if ! command -v devbox > /dev/null 2>&1; then
 	echo "installing devbox"
 	curl -fsSL https://get.jetify.com/devbox | bash
 	cd ~/.devbox-environments/claude
