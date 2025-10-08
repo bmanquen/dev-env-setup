@@ -53,6 +53,15 @@ else
 	log "findutils is already installed"
 fi
 
+if ! command -v rg >/dev/null 2>&1; then
+	log "Installing ripgrep"
+	if [[ $dry != "1" ]]; then
+		brew install ripgrep
+	fi
+else
+	log "ripgrep is already installed"
+fi
+
 if [ ! -d "${HOME}/workspace" ]; then
 	log "creating workspace directory..."
 	if [[ $dry != "1" ]]; then
