@@ -21,11 +21,12 @@ alias gpf="git push --force-with-lease"
 alias gr="git pull --rebase"
 
 # File Aliases
-alias otb="cd workspace/OT-Backend/hs-backend"
-alias otf="cd workspace/OT-Frontend/mobile-app-maps"
+alias "yvp-kotlin"="cd workspace/yv/platform-sdk-kotlin"
+alias "yvp-react"="cd workspace/yv/platform-sdk-react"
+alias cc="cd workspace/coffee-companion"
 
 # Claude Code
-alias cc="claude-shell"
+alias cs="claude-shell"
 export PATH="$PATH:$HOME/.devbox-environments/bin"
 
 # PostgreSQL
@@ -33,3 +34,6 @@ export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 # asdf
 export PATH="$HOME/.asdf/shims:$PATH"
+
+# Command Aliases
+alias tmux-setup="~/workspace/dev-env/.ready-tmux"
