@@ -1,3 +1,28 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-tmux neww -n foofoo
+DIR="$(pwd)"
+SESSION="$(basename "$DIR")"
+
+# If session already exists, just attach to it
+if tmux has-session -t "$SESSION" 2>/dev/null; then
+  tmux attach-session -t "$SESSION"
+  exit 0
+fi
+
+# Create session (window 1: neovim)
+tmux new-session -d -s "$SESSION" -c "$DIR" -n "editor"
+tmux send-keys -t "$SESSION:editor" "nvim ." Enter
+
+# Window 2: server 1
+tmux new-window -t "$SESSION" -c "$DIR" -n "server-1"
+
+# Window 3: server 2
+tmux new-window -t "$SESSION" -c "$DIR" -n "server-2"
+
+# Window 4: claude code
+tmux new-window -t "$SESSION" -c "$DIR" -n "claude"
+tmux send-keys -t "$SESSION:claude" "claude" Enter
+
+# Focus the editor window and attach
+tmux select-window -t "$SESSION:editor"
+tmux attach-session -t "$SESSION"

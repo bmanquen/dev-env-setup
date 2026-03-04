@@ -1,0 +1,99 @@
+" =============================================================
+" .ideavimrc — Mirror your Neovim kickstart config in IdeaVim
+" =============================================================
+
+" -- Leader key --
+let mapleader = " "
+
+" -- Options (matching your init.lua) --
+set number
+set relativenumber
+set ignorecase
+set smartcase
+set hlsearch
+set scrolloff=10
+set clipboard+=unnamed
+set ideajoin
+
+" -- IdeaVim plugin emulations --
+set surround          " mini.surround equivalent
+set commentary        " gc commenting (Comment.nvim equivalent)
+set NERDTree          " file tree sidebar
+set which-key         " shows pending keybinds like folke/which-key
+set notimeout         " let which-key show without timeout
+
+" -- Clear search highlight with Esc --
+nmap <Esc> :nohlsearch<CR>
+
+" =============================================================
+" Telescope-equivalent search mappings
+" =============================================================
+
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>sg <Action>(FindInPath)
+nmap <leader>sw <Action>(FindUsages)
+nmap <leader>sh <Action>(SearchEverywhere)
+nmap <leader>sk <Action>(GotoAction)
+nmap <leader>sd <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>s. <Action>(RecentFiles)
+nmap <leader><leader> <Action>(Switcher)
+nmap <leader>/ <Action>(Find)
+
+" =============================================================
+" LSP-equivalent mappings
+" =============================================================
+
+nmap gd <Action>(GotoDeclaration)
+nmap gr <Action>(FindUsages)
+nmap gI <Action>(GotoImplementation)
+nmap <leader>D <Action>(GotoTypeDeclaration)
+nmap <leader>ds <Action>(FileStructurePopup)
+nmap <leader>ws <Action>(GotoSymbol)
+nmap <leader>rn <Action>(RenameElement)
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap K <Action>(QuickJavaDoc)
+
+" =============================================================
+" Diagnostics
+" =============================================================
+
+nmap [d <Action>(GotoPreviousError)
+nmap ]d <Action>(GotoNextError)
+nmap <leader>e <Action>(ShowErrorDescription)
+nmap <leader>q <Action>(ActivateProblemsViewToolWindow)
+
+" =============================================================
+" Formatting
+" =============================================================
+
+nmap <leader>f <Action>(ReformatCode)
+
+" =============================================================
+" Window navigation
+" =============================================================
+
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+
+" =============================================================
+" Git
+" =============================================================
+
+nmap <leader>hb <Action>(Annotate)
+nmap <leader>hr <Action>(Vcs.RollbackChangedLines)
+
+" =============================================================
+" NERDTree (file explorer)
+" =============================================================
+
+nmap <leader>n :NERDTreeToggle<CR>
+
+" =============================================================
+" Extras
+" =============================================================
+
+nmap <leader>tt <Action>(ActivateTerminalToolWindow)
+nmap <leader>tr <Action>(Run)
+nmap <leader>td <Action>(Debug)
