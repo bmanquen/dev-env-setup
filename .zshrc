@@ -40,3 +40,5 @@ alias tmux-setup="~/workspace/dev-env/.ready-tmux"
 
 # Java JDK
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+
+export PATH="$HOME/.local/bin:$PATH"
