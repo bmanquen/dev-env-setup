@@ -3,7 +3,6 @@ autoload -Uz compinit && compinit
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-export PATH="$PATH:/Users/bmanquen/workspace/worldbanc/private/bin"
 export XDG_CONFIG_HOME=$HOME/.config
 
 # Generated for envman. Do not edit.
@@ -36,7 +35,7 @@ export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
 
 # Command Aliases
-alias tmux-setup="~/workspace/dev-env/.ready-tmux"
+alias tmux-setup="~/workspace/dev-env-setup/.ready-tmux"
 
 # Java JDK
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
