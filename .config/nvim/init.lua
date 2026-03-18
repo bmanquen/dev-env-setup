@@ -211,14 +211,17 @@ vim.api.nvim_create_autocmd('BufWritePre', {
       return
     end
 
-    vim.lsp.buf.code_action {
-      apply = true,
-      context = { only = { 'source.addMissingImports' }, diagnostics = {} },
-    }
-    vim.lsp.buf.code_action {
-      apply = true,
-      context = { only = { 'source.organizeImports' }, diagnostics = {} },
-    }
+    local params = vim.lsp.util.make_range_params()
+    params.context = { only = { 'source.addMissingImports', 'source.organizeImports' }, diagnostics = {} }
+
+    local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, 3000)
+    for _, res in pairs(result or {}) do
+      for _, action in pairs(res.result or {}) do
+        if action.edit then
+          vim.lsp.util.apply_workspace_edit(action.edit, 'utf-8')
+        end
+      end
+    end
   end,
 })
 
