@@ -624,7 +624,7 @@ require('lazy').setup({
         astro = {},
         emmet_language_server = {},
         html = {},
-        htmx = {},
+        -- htmx = {},
         tailwindcss = {},
 
         --
