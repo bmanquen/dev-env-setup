@@ -204,6 +204,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd('BufWritePre', {
+  callback = function()
+    local clients = vim.lsp.get_clients { bufnr = 0 }
+    if #clients == 0 then
+      return
+    end
+
+    vim.lsp.buf.code_action {
+      apply = true,
+      context = { only = { 'source.addMissingImports' }, diagnostics = {} },
+    }
+    vim.lsp.buf.code_action {
+      apply = true,
+      context = { only = { 'source.organizeImports' }, diagnostics = {} },
+    }
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -317,8 +335,7 @@ require('lazy').setup({
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
-    branch = '0.1.x',
+    version = '*',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -335,7 +352,6 @@ require('lazy').setup({
         end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
-
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
