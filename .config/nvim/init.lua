@@ -995,6 +995,8 @@ require('lazy').setup({
       }
     end,
   },
+  -- Auto-close/rename JSX tags
+  { 'windwp/nvim-ts-autotag', opts = {} },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
