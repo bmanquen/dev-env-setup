@@ -4,8 +4,8 @@ DIR="$(pwd)"
 SESSION="$(basename "$DIR")"
 
 # If session already exists, just attach to it
-if tmux has-session -t "$SESSION" 2>/dev/null; then
-  tmux attach-session -t "$SESSION"
+if tmux has-session -t="$SESSION" 2>/dev/null; then
+  tmux attach-session -t="$SESSION"
   exit 0
 fi
 
